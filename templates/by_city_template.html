@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--This page is the route for viewing by city. Show record high temp, year record high temp was recorded, record low temp, and year record low temp
+    was recorded for
+the first of every month in 2014 and 2015 for the specified city. Show tables for this?-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather by City</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/css/foundation.css">
+</head>
+
+<body>
+    <body style="background-color: rgb(255, 253, 235)">
+        <div id="page">
+            <div class="top-bar-container" data-sticky-container>
+                <div class="top-bar sticky" style="background-color: hsla(133, 18%, 29%, 0.85)" data-sticky
+                    data-options="anchor: page; marginTop: 0; stickyOn: small;">
+                    <div class="top-bar-left show-for-small-only">
+                        <button class="button" type="button" data-toggle="offCanvas" style="background-color: transparent">
+                            <!-- Screen readers will see "close" -->
+                            <span class="show-for-sr">Menu</span>
+                            <!-- Visual users will see the list, but not the "menu" text -->
+                            <span aria-hidden="true"><i class="fi-plus"
+                                    style="font-size: 1.5rem; position: relative; top: 0.4rem"></i></span>
+                        </button>
+                    </div>
+                    <!-- Top Bar Menu -->
+                    <div class="top-bar-left show-for-medium">
+                        <ul class="dropdown menu" style="
+                      background-color: transparent;
+                      font-family: 'Courier New', Courier, monospace;
+                      text-transform: uppercase;
+                      font-weight: 500;
+                    " data-dropdown-menu>
+                            <li>
+                                <a href="/general/actual" style="color: rgb(255, 255, 255)"
+                                  >General</a
+                                >
+                              </li>
+                              <li>
+                                <a href="/month/7" style="color: rgb(255, 255, 255)">Month</a>
+                              </li>
+                              <li>
+                                <a href="/city/clt" style="color: rgb(255, 255, 255)">City</a>
+                              </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="dropdown menu top-bar-right" style="
+                      background-color: transparent;
+                      font-family: 'Courier New', Courier, monospace;
+                      text-transform: uppercase;
+                    ">
+                            <li class="menu-text" style="color: white">PROJECT 02</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="offCanvas-content" data-off-canvas-content>
+                <!-- main content within a `grid-container` -->
+                <div class="grid-container fluid">
+                    
+                    <!-- `grid-x` represents a row -->
+                    <div class="grid-x grid-padding-y grid-padding-x">
+                        <div class="cell large-auto">
+                            
+                            <div
+                                style="
+                                text-align: center;
+                                color: rgb(104, 104, 104);
+                                font-weight: bold;
+                                "
+                            >
+                                <h1 style="text-align: center; margin-top: 3%; margin-bottom: 1%">
+                                    TEMPERATURE STATISTICS FOR EACH MONTH IN %%CITY_NAME%%
+                                    </h1>
+                                <p>
+
+                                </p>
+                            </div>
+
+                            <div id="content">
+                                
+                                
+                                <div style="text-align: center; margin-bottom: 0.5%">
+                                    <img id="city_img" src="%%CITY_IMAGE%%" alt="%%CITY_ALT_TEXT%%" />
+                                </div>
+
+                                <div style="text-align: center; display: block; ">
+                                    <button class="hollow button" style="margin-right: 1%">
+                                      <a href="%%PREV%%">PREV</a>
+                                    </button>
+                                    <button class="hollow button">
+                                      <a href="%%NEXT%%">NEXT</a>
+                                    </button>
+                                </div>
+                                
+                                <div class="clear"></div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th class="title">Record High Temperature for this Date (Degrees F) </th>
+                                            <th class="title">Year Record High was Recorded</th>
+                                            <th class="title">Record Low Temperature for this Date (Degrees F) </th>
+                                            <th class="title">Year Record Low was Recorded</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        %%CITY_WEATHER_INFO%%
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script src="js/vendor.js"></script>
+        <script src="js/foundation.js"></script>
+        <script type="application/javascript">
+            $(document).foundation();
+        </script>
+    </body>
+    
+    </html>
+

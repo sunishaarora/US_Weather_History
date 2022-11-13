@@ -1,0 +1,70 @@
+* {
+  margin: 0 auto;
+}
+
+html {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 100%;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  border: solid 1px #666666;
+  width: 6rem;
+  text-align: center;
+}
+
+td {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: normal;
+  border: solid 1px #666666;
+  width: 6rem;
+  text-align: right;
+}
+
+#content {
+  width: 1000px;
+  background-color: rgba(216, 218, 222, 0.849);
+}
+
+#city_img {
+  float: left;
+  width: 150px;
+  margin: 12px 32px 20px 12px;
+}
+
+#city_name {
+  float: left;
+  width: 800px;
+  margin-top: 60px;
+}
+
+.title {
+  width: 8rem;
+}
+
+.clear {
+  clear: both;
+}
+
+.float_left {
+  float: left;
+}
+
+.float_right {
+  float: right;
+}

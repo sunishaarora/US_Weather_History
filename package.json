@@ -1,0 +1,29 @@
+{
+  "name": "dynamic-webserver",
+  "version": "0.0.0",
+  "description": "Dynamic Web Server using Node JS",
+  "author": {
+    "name": "Sunisha Arora",
+    "email": "sunisha.arora@stthomas.edu"
+  },
+  "contributors": [
+    {
+      "name": "Jordan Curtis",
+      "email": "jc.curtis@stthomas.edu"
+    },
+    {
+      "name": "Anna Curtler",
+      "email": "anna.curtler@stthomas.edu"
+    }
+  ],
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "chart.js": "^3.9.1",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.2"
+  }
+}

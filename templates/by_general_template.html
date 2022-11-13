@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!--This page is the route for viewing by city. Show record high temp, year record high temp was recorded, record low temp, and year record low temp
+    was recorded for
+the first of every month in 2014 and 2015 for the specified city. Show tables for this?-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Weather in General</title>
+    <link rel="stylesheet" href="/css/foundation.css" />
+  </head>
+  <body style="background-color: rgb(255, 253, 235)">
+    <div id="page">
+      <div class="top-bar-container" data-sticky-container>
+        <div
+          class="top-bar sticky"
+          style="background-color: hsla(133, 18%, 29%, 0.85)"
+          data-sticky
+          data-options="anchor: page; marginTop: 0; stickyOn: small;"
+        >
+          <div class="top-bar-left show-for-small-only">
+            <button
+              class="button"
+              type="button"
+              data-toggle="offCanvas"
+              style="background-color: transparent"
+            >
+              <!-- Screen readers will see "close" -->
+              <span class="show-for-sr">Menu</span>
+              <!-- Visual users will see the list, but not the "menu" text -->
+              <span aria-hidden="true"
+                ><i
+                  class="fi-plus"
+                  style="font-size: 1.5rem; position: relative; top: 0.4rem"
+                ></i
+              ></span>
+            </button>
+          </div>
+          <!-- Top Bar Menu -->
+          <div class="top-bar-left show-for-medium">
+            <ul
+              class="dropdown menu"
+              style="
+                background-color: transparent;
+                font-family: 'Courier New', Courier, monospace;
+                text-transform: uppercase;
+                font-weight: 500;
+              "
+              data-dropdown-menu
+            >
+              <li>
+                <a href="/general/actual" style="color: rgb(255, 255, 255)"
+                  >General</a
+                >
+              </li>
+              <li>
+                <a href="/month/7" style="color: rgb(255, 255, 255)">Month</a>
+              </li>
+              <li>
+                <a href="/city/clt" style="color: rgb(255, 255, 255)">City</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul
+              class="dropdown menu top-bar-right"
+              style="
+                background-color: transparent;
+                font-family: 'Courier New', Courier, monospace;
+                text-transform: uppercase;
+              "
+            >
+              <li class="menu-text" style="color: white">PROJECT 02</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="offCanvas-content" data-off-canvas-content>
+        <!-- main content within a `grid-container` -->
+        <div class="grid-container fluid">
+          <!-- `grid-x` represents a row -->
+          <div class="grid-x grid-padding-y grid-padding-x">
+            <div class="cell large-auto">
+              <div
+                style="
+                  text-align: center;
+                  color: rgb(104, 104, 104);
+                  font-weight: bold;
+                "
+              >
+                <h1 style="text-align: center; margin-top: 3%">
+                  %%STAT_TYPE%% TEMPERATURE STATISTICS FOR EACH CITY
+                </h1>
+                <p>
+                  RECORD: The highest and lowest recorded temperatures of all
+                  time AT THE TIME of the given date.
+                </p>
+                <p>
+                  AVERAGE: The average for the highest and lowest temperatures
+                  ON the given date.
+                </p>
+                <p>
+                  ACTUAL: The highest and lowest recorded temperatures ON the
+                  given date.
+                </p>
+              </div>
+
+              <div style="text-align: center; display: block; margin-top: 3%">
+                <button class="hollow button" style="margin-right: 1%">
+                  <a href="%%PREV%%">PREV</a>
+                </button>
+                <button class="hollow button">
+                  <a href="%%NEXT%%">NEXT</a>
+                </button>
+              </div>
+
+              <div>
+                <canvas
+                  id="myChart1"
+                  width="400"
+                  height="150"
+                  style="
+                    margin-left: 5%;
+                    margin-right: 5%;
+                    margin-bottom: 5%;
+                    margin-top: 2%;
+                  "
+                ></canvas>
+              </div>
+              <div>
+                <canvas
+                  id="myChart2"
+                  width="400"
+                  height="150"
+                  style="margin: 5%"
+                ></canvas>
+              </div>
+
+              <script>
+                const ctx1 = document.getElementById("myChart1");
+                const myChart1 = new Chart(ctx1, {
+                  type: "line",
+                  data: {
+                    labels: [
+                      "7/1/14",
+                      "8/1/14",
+                      "9/1/14",
+                      "10/1/14",
+                      "11/1/14",
+                      "12/1/14",
+                      "1/1/15",
+                      "2/1/15",
+                      "3/1/15",
+                      "4/1/15",
+                      "5/1/15",
+                      "6/1/15",
+                    ],
+                    datasets: [
+                      {
+                        label: "CLT",
+                        data: %%MAX_TEMP_CLT%%,
+                        backgroundColor: ["rgba(52, 143, 223, 0.8)"],
+                        borderColor: ["rgba(52, 143, 223, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "CQT",
+                        data: %%MAX_TEMP_CQT%%,
+                        backgroundColor: ["rgba(65, 52, 223, 0.8)"],
+                        borderColor: ["rgba(65, 52, 223, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "HOU",
+                        data: %%MAX_TEMP_HOU%%,
+                        backgroundColor: ["rgba(179, 111, 255, 0.8)"],
+                        borderColor: ["rgba(179, 111, 255, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "IND",
+                        data: %%MAX_TEMP_IND%%,
+                        backgroundColor: ["rgba(87, 164, 128, 0.8)"],
+                        borderColor: ["rgba(87, 164, 128, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "JAX",
+                        data: %%MAX_TEMP_JAX%%,
+                        backgroundColor: ["rgba(42, 208, 54, 0.8)"],
+                        borderColor: ["rgba(42, 208, 54, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "MDW",
+                        data: %%MAX_TEMP_MDW%%,
+                        backgroundColor: ["rgba(151, 208, 42, 0.8)"],
+                        borderColor: ["rgba(151, 208, 42, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "NYC",
+                        data: %%MAX_TEMP_NYC%%,
+                        backgroundColor: ["rgba(251, 82, 82, 0.8)"],
+                        borderColor: ["rgba(251, 82, 82, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "PHL",
+                        data: %%MAX_TEMP_PHL%%,
+                        backgroundColor: ["rgba(173, 43, 43, 0.8)"],
+                        borderColor: ["rgba(173, 43, 43, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "PHX",
+                        data: %%MAX_TEMP_PHX%%,
+                        backgroundColor: ["rgba(255, 162, 0, 0.8)"],
+                        borderColor: ["rgba(255, 162, 0, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "SEA",
+                        data: %%MAX_TEMP_SEA%%,
+                        backgroundColor: ["rgba(0, 220, 213, 0.8)"],
+                        borderColor: ["rgba(0, 220, 213, 0.8)"],
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: "HIGHEST TEMPERATURES FOR EACH CITY",
+                        font: {
+                          size: 35
+                        },
+                      },
+                    },
+
+                    layout: {
+                      padding: 20,
+                    },
+
+                    scales: {
+                      y: {
+                        title: {
+                          display: true,
+                          text: 'Temperature (Farenheit)',
+                          font: {
+                            size: 25
+                          }
+                        },
+                        min: -20,
+                        max: 120,
+                      },
+
+                      x: {
+                        title: {
+                          display: true,
+                          text: 'Date (M/D/Y)',
+                          font: {
+                            size: 25
+                          }
+                        }
+                      }
+                    },
+                  },
+                });
+
+                const ctx2 = document.getElementById("myChart2");
+                const myChart2 = new Chart(ctx2, {
+                  type: "line",
+                  data: {
+                    labels: [
+                      "7/1/14",
+                      "8/1/14",
+                      "9/1/14",
+                      "10/1/14",
+                      "11/1/14",
+                      "12/1/14",
+                      "1/1/15",
+                      "2/1/15",
+                      "3/1/15",
+                      "4/1/15",
+                      "5/1/15",
+                      "6/1/15",
+                    ],
+                    datasets: [
+                      {
+                        label: "CLT",
+                        data: %%MIN_TEMP_CLT%%,
+                        backgroundColor: ["rgba(52, 143, 223, 0.8)"],
+                        borderColor: ["rgba(52, 143, 223, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "CQT",
+                        data: %%MIN_TEMP_CQT%%,
+                        backgroundColor: ["rgba(65, 52, 223, 0.8)"],
+                        borderColor: ["rgba(65, 52, 223, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "HOU",
+                        data: %%MIN_TEMP_HOU%%,
+                        backgroundColor: ["rgba(179, 111, 255, 0.8)"],
+                        borderColor: ["rgba(179, 111, 255, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "IND",
+                        data: %%MIN_TEMP_IND%%,
+                        backgroundColor: ["rgba(87, 164, 128, 0.8)"],
+                        borderColor: ["rgba(87, 164, 128, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "JAX",
+                        data: %%MIN_TEMP_JAX%%,
+                        backgroundColor: ["rgba(42, 208, 54, 0.8)"],
+                        borderColor: ["rgba(42, 208, 54, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "MDW",
+                        data: %%MIN_TEMP_MDW%%,
+                        backgroundColor: ["rgba(151, 208, 42, 0.8)"],
+                        borderColor: ["rgba(151, 208, 42, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "NYC",
+                        data: %%MIN_TEMP_NYC%%,
+                        backgroundColor: ["rgba(251, 82, 82, 0.8)"],
+                        borderColor: ["rgba(251, 82, 82, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "PHL",
+                        data: %%MIN_TEMP_PHL%%,
+                        backgroundColor: ["rgba(173, 43, 43, 0.8)"],
+                        borderColor: ["rgba(173, 43, 43, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "PHX",
+                        data: %%MIN_TEMP_PHX%%,
+                        backgroundColor: ["rgba(255, 162, 0, 0.8)"],
+                        borderColor: ["rgba(255, 162, 0, 0.8)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "SEA",
+                        data: %%MIN_TEMP_SEA%%,
+                        backgroundColor: ["rgba(0, 220, 213, 0.8)"],
+                        borderColor: ["rgba(0, 220, 213, 0.8)"],
+                        borderWidth: 1,
+                      },
+                    ],
+                  },
+                  options: {
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: "LOWEST TEMPERATURES FOR EACH CITY",
+                        font: {
+                          size: 35
+                        },
+                      },
+                    },
+
+                    layout: {
+                      padding: 20,
+                    },
+
+                    scales: {
+                      y: {
+                        title: {
+                          display: true,
+                          text: 'Temperature (Farenheit)',
+                          font: {
+                            size: 25
+                          }
+                        },
+                        min: -20,
+                        max: 120,
+                      },
+
+                      x: {
+                        title: {
+                          display: true,
+                          text: 'Date (M/D/Y)',
+                          font: {
+                            size: 25
+                          }
+                        }
+                      }
+                    },
+                  },
+                });
+              </script>
+
+              <div id="content">
+                <div class="clear"></div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th class="title">City</th>
+                      <th class="title">Date</th>
+                      <th class="title">Actual Mean Temp</th>
+                      <th class="title">Max Temp</th>
+                      <th class="title">Min Temp</th>
+                      <th class="title">Precipitation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    %%CITY_WEATHER_INFO%%
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendor.js"></script>
+    <script src="js/foundation.js"></script>
+    <script type="application/javascript">
+      $(document).foundation();
+    </script>
+  </body>
+</html>
