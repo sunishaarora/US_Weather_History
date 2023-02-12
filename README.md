@@ -1,12 +1,11 @@
 
-# Dynamic Web Server
+# US Weather History
 
-Dynamic web server that analyzes data from [US Weather History repository](https://github.com/fivethirtyeight/data/tree/master/us-weather-history) by categorizing it by temperature, month, and city
-to view the results both graphically and in the form of a spreadsheet.
+Dynamic web server that analyzes data from [US Weather History repository](https://github.com/fivethirtyeight/data/tree/master/us-weather-history) by categorizing it by temperature, month, and city to view the results both graphically and in the form of a spreadsheet.
 
 # To run the project
 
-1. git clone [the repository](https://github.com/sunishaarora/dynamic_web_server)
+1. git clone [the repository](https://github.com/sunishaarora/US_Weather_History.git)
 2. cd to the project
 3. npm install
 4. node server.js
